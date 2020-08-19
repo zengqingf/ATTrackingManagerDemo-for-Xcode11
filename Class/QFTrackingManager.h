@@ -5,13 +5,6 @@
 //  Created by dev on 2020/8/5.
 //
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
-//If you are using Xcode 12.0 and above, Please link AppTrackingTransparency.framework
-#import <AppTrackingTransparency/AppTrackingTransparency.h>
-#define QFTrackingManager ATTrackingManager
-#endif
-
-#ifndef QFTrackingManager
 #import <Foundation/Foundation.h>
 #import <os/availability.h>
 
@@ -75,4 +68,3 @@ API_AVAILABLE(ios(14), macosx(11.0), tvos(14))
 @end
 
 NS_ASSUME_NONNULL_END
-#endif
