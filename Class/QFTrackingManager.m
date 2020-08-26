@@ -6,7 +6,7 @@
 //
 
 #import "QFTrackingManager.h"
-
+#ifdef ATTrackingManager
 @implementation QFTrackingManager
 
 + (ATTrackingManagerAuthorizationStatus) trackingAuthorizationStatus {
@@ -36,3 +36,4 @@
     return cls;
 }
 @end
+#endif

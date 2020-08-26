@@ -23,26 +23,27 @@
 - (IBAction)trackStatusBtnAction:(id)sender {
     
     if (@available(iOS 14, *)) {
-        NSLog(@"current status：%ld", QFTrackingManager.trackingAuthorizationStatus);
+        NSLog(@"trackingAuthorizationStatus：%ld", ATTrackingManager.trackingAuthorizationStatus);
     } else {
         // Fallback on earlier versions
     }
     
     BOOL enable = [ASIdentifierManager sharedManager].isAdvertisingTrackingEnabled;
-    NSLog(@"广告id是否可获得 = %ld", enable);//iOS14上，这个状态一直是0
-    
+    NSLog(@"isAdvertisingTrackingEnabled = %ld", enable);//in iOS14，This state is always NO
+
     NSString *udidString = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
-    NSLog(@"广告id = %@", udidString);//模拟器上，这个一直是00000000-0000-0000-0000-000000000000
+    NSLog(@"advertisingIdentifier = %@", udidString);//On the simulator，This state is always 00000000-0000-0000-0000-000000000000
 }
 
 - (IBAction)reqTrackBtnAction:(id)sender {
     
     if (@available(iOS 14, *)) {
-        [QFTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
             NSLog(@"request status：%ld", status);
         }];
     } else {
         // Fallback on earlier versions
+        NSLog(@"not allow");
     }
 }
 
